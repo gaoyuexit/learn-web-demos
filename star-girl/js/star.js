@@ -41,6 +41,11 @@ starObj.prototype.draw = function()
     this.delta = 0;
   }
 
+  /**
+   * save()和restore()往往成对出现
+   * 可以使得save()和restore()之间的内容仅作用于两者之间, 所以背景图和小女孩图片不受影响, 只影响画的starPic
+   */
+
   ctx.save();
 
   ctx.globalAlpha = starAlpha;

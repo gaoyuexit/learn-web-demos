@@ -20,8 +20,11 @@ var stars = [];
 // 上一帧刷新的时间
 var lastTime;
 // 当前帧刷新的时间与上次帧刷新时间的间隔
-var deltaTime
-
+var deltaTime;
+// 鼠标是否在图片的区域内
+var switchy = false;
+// 星星的透明度
+var starAlpha = 0;
 
 function init()
 {
@@ -46,10 +49,22 @@ function init()
     //   drawGril();
     // }
     gameloop();
+
+    document.addEventListener("mousemove", mousemove, false)
   }
 }
 
 document.body.onload = init;
+
+function mousemove(e)
+{
+  if(e.offsetX || e.layerX)
+  {
+    var px = e.offsetX == undefined ? e.layerX : e.offsetX
+    var py = e.offsetY == undefined ? e.layerY : e.offsetY
+    switchy = px > 100 && px < 700 && py > 150 && py < 450
+  }
+}
 
 /**
  * 循环调用的方法
@@ -69,6 +84,7 @@ function gameloop()
   drawBackground();
   drawGril();
   drawStars();
+  starAlphaUpdate();
 }
 
 function drawBackground()

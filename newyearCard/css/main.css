@@ -8,6 +8,7 @@
 
 html, body, {
   height: 100%;
+  overflow: hidden;
 }
 .page {
   position: absolute;
@@ -21,6 +22,11 @@ html, body, {
   position: absolute;
   z-index: -1;
 }
+
+#page1 {
+  display: block;
+}
+
 #page1 > .bg {
   background: url("../images/p1_bg.jpg") no-repeat center center;
   background-size: 100%;
@@ -48,7 +54,7 @@ html, body, {
 
   background: url(../images/p1_lantern.png) no-repeat center bottom;
   background-size: 100%;
-
+  color: white;
   text-align: center;
   padding-top: 26.5vh;
   
@@ -57,10 +63,6 @@ html, body, {
       -ms-box-sizing: border-box;
        -o-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-#page1 {
-  display: none;
 }
 
 /* 灯笼 */
@@ -112,8 +114,14 @@ html, body, {
 }
 
 #page2 {
-  display: block;
+  display: none;
+  transition: .5s;
 }
+
+#page2.fadeOut {
+  opacity: .3;
+  transform: translate(0, -100%);
+} 
 
 #page2 .p2_circle {
   position: absolute;
@@ -187,7 +195,13 @@ html, body, {
 
 #page3 {
   display: none;
+  transition: .5s;
 }
+/* page3的出现 */
+#page3.fadeIn {
+  transform: translate(0, -100%);
+}
+
 
 #page3 .p3_logo {
   position: absolute;
@@ -246,7 +260,7 @@ html, body, {
   background-size: 100%;
 }
 
-#music{
+.music{
   width: 15vw;
   height: 15vw;
   border: 4px solid #ef1639;
@@ -259,7 +273,7 @@ html, body, {
 }
 
 /* 第一个music元素中的所有img元素 */
-#music > img:first-of-type {
+.music > img:first-of-type {
   /* 父元素music为fixed, 所以absolute可以直接使用 */
   position: absolute;
   top: 24%;
@@ -269,7 +283,7 @@ html, body, {
 }
 
 /* 理解一下这种居中写法 */
-#music > img:last-of-type {
+.music > img:last-of-type {
   position: absolute;
   top: 0;
   right: 0;
@@ -280,7 +294,7 @@ html, body, {
   z-index: 0;
 }
 
-#music > img.play {
+.music > img.play {
   animation: music_disc 4s linear infinite;
 }
 
